@@ -32,6 +32,8 @@ const (
 	// DictOutput presents the same information as TabOutput, but each flow is
 	// presented as a key:value dictionary, similar to \G output of mysql.
 	DictOutput
+	// RawJSONOutput prints GetFlowsResponse as JSON as is.
+	RawJSONOutput
 )
 
 // Options for the printer.
@@ -50,6 +52,13 @@ type Option func(*Options)
 func JSON() Option {
 	return func(opts *Options) {
 		opts.output = JSONOutput
+	}
+}
+
+// RawJSON encodes GetFlowsResponse as JSON as is.
+func RawJSON() Option {
+	return func(opts *Options) {
+		opts.output = RawJSONOutput
 	}
 }
 
